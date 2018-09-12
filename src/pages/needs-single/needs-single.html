@@ -1,0 +1,79 @@
+<!-- header segment of the page -->
+<ion-header>
+  <ion-navbar>
+  </ion-navbar>
+</ion-header>
+
+<!-- body segment of the page -->
+<ion-content no-padding id='main'>
+  <ion-grid no-padding>
+
+    <!-- Blood group detail of the need thread -->
+    <ion-list no-border style="margin-top: 30px;">
+      <ion-item>
+        <ion-icon name='md-water' item-start color="primary"></ion-icon>
+        <h2 ion-text color="dark">Blood Group :</h2>
+        <p>{{ (needData | async)?.bloodgroup }}</p>
+      </ion-item>
+      <ion-item>
+        <ion-icon name='md-albums' item-start color="blue"></ion-icon>
+        <h2 ion-text color="dark">Description :</h2>
+        <p style="white-space: normal !important;" text-justify>{{ (needData | async)?.desc }}</p>
+      </ion-item>
+    </ion-list>
+
+    <ion-list no-border>
+      <ion-item>
+        <ion-icon name='md-calendar' item-start color="green"></ion-icon>
+        <h2 ion-text color="dark">Need Before :</h2>
+        <p>{{ (needData | async)?.needbefore }}</p>
+      </ion-item>
+      <ion-item>
+        <ion-icon name='md-map' item-start color="blue"></ion-icon>
+        <h2 ion-text color="dark">District :</h2>
+        <p>{{ (needData | async)?.district }}</p>
+      </ion-item>
+      <ion-item>
+        <ion-icon name='ios-navigate' item-start color="blue"></ion-icon>
+        <h2 ion-text color="dark">City :</h2>
+        <p>{{ (needData | async)?.city }}</p>
+      </ion-item>
+    </ion-list>
+
+    <ion-list no-border>
+      <ion-item>
+        <ion-icon name='md-contact' item-start color="brown"></ion-icon>
+        <h2 ion-text color="dark">Requested By :</h2>
+        <p>{{ ownerName }}</p>
+      </ion-item>
+    </ion-list>
+
+    <ion-row justify-content-center *ngIf="!isOwner">
+      <ion-col col-10 text-center style="margin-bottom: 16px;">
+        <p *ngIf="!isEligible">
+          You don't have the same blood group to enroll.
+        </p>
+        <button ion-button block strong text-uppercase class="btn-enroll" *ngIf="!isEligible" disabled>Enroll Now</button>
+        <p *ngIf="!hasEnrolled && isEligible">
+          You have the same blood group. Enroll to help!
+        </p>
+        <button ion-button block strong text-uppercase class="btn-enroll" *ngIf="!hasEnrolled && isEligible" (click)="enroll_alert()">Enroll Now</button>
+        <p *ngIf="hasEnrolled && isEligible">
+          You have already enrolled to this thread. Thank you!
+        </p>
+        <button ion-button block strong text-uppercase color="brown" class="btn-unenroll" *ngIf="hasEnrolled && isEligible" (click)="unenroll_alert()">Unenroll</button>
+      </ion-col>
+    </ion-row>
+
+    <h3 ion-text text-uppercase color="card-header" style="margin-top: 0px; margin-bottom:10px; padding-left: 12px;" *ngIf="isOwner && hasEnrolledDonors">Enrolled Donors</h3>
+    <ion-scroll scrollX="true" style="white-space: nowrap;" *ngIf="isOwner && hasEnrolledDonors">
+      <ion-list>
+        <!-- <ion-item> -->
+        <div *ngFor="let donor of enrolledUsers" style="display: inline-block; padding-left: 12px;">
+          <img class="profile_picture" src="{{donor.profileUrl}}" (click)="push__profile_donor_page(donor.userId)">
+        </div>
+        <!-- </ion-item> -->
+      </ion-list>
+    </ion-scroll>
+  </ion-grid>
+</ion-content>

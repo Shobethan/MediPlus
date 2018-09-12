@@ -1,19 +1,20 @@
+// imports necessary packages for the welcome page
 import { Component } from '@angular/core';
 
-import { AboutPage } from '../about/about';
-import { ContactPage } from '../contact/contact';
-import { HomePage } from '../home/home';
+import { PatientsPage } from '../patients/patients';
+import { ProfilePage } from '../profile/profile';
+import { SettingsPage } from '../settings/settings';
+import { DiseasesPage } from '../diseases/diseases';
 
 @Component({
   templateUrl: 'tabs.html'
 })
+
 export class TabsPage {
+  tab1Root = PatientsPage;
+  tab2Root = DiseasesPage;
+  tab3Root = ProfilePage;
+  tab4Root = SettingsPage
 
-  tab1Root = HomePage;
-  tab2Root = AboutPage;
-  tab3Root = ContactPage;
-
-  constructor() {
-
-  }
+  constructor() { }
 }
