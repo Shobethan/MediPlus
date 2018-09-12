@@ -1,0 +1,50 @@
+<!-- header segment of the page -->
+<ion-header>
+  <ion-navbar>
+    <ion-title>CREATE NEW DISEASE</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<!-- body segment of the page -->
+<ion-content no-padding no-bounce id="main">
+  <ion-grid>
+    <ion-row justify-content-center id="needs-form">
+      <ion-col>
+
+        <!-- Disease name field (text) -->
+        <ion-item no-padding>
+          <ion-label color="primary" floating>
+            <h2>Disease Name* :</h2>
+          </ion-label>
+          <ion-input type="text" [(ngModel)]="dis.name" name="dname"></ion-input>
+        </ion-item>
+
+        
+
+        <!-- Description field (text area) -->
+        <ion-item no-padding>
+          <ion-label color="primary" floating>
+            <h2>Description* :</h2>
+          </ion-label>
+          <ion-textarea type="text" [(ngModel)]="dis.desc" name="desc"></ion-textarea>
+        </ion-item>
+
+
+
+        <!-- City field -->
+        <ion-item no-padding>
+          <ion-label color="primary" floating>
+            <h2>Special Announcement* :</h2>
+          </ion-label>
+          <ion-input clearInput type="text"  [(ngModel)]="dis.sp_anno" name="sp_anno"></ion-input>
+        </ion-item>
+
+        <!-- Two different create buttons for with & without empty required fields -->
+        
+        <button ion-button block strong class="btn-create" *ngIf="!dis.sp_anno || !dis.desc || !dis.name" (click)="blank_create()">CREATE</button>
+        <button ion-button block strong class="btn-create" *ngIf="dis.sp_anno  && dis.desc && dis.name" (click)="create(need)">CREATE</button>
+        
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

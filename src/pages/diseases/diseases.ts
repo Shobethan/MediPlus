@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { DiseaseCreatePage } from '../disease-create/disease-create';
 
 /**
  * Generated class for the DiseasesPage page.
@@ -18,8 +19,17 @@ export class DiseasesPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad DiseasesPage');
+  // ionViewDidLoad() {
+  //   console.log('ionViewDidLoad DiseasesPage');
+  // }
+
+
+  push__needs_create_page() {
+
+      this.navCtrl.push(DiseaseCreatePage)
+
+
   }
+
 
 }

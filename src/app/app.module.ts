@@ -32,6 +32,8 @@ import { DiseasesPage } from '../pages/diseases/diseases';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Camera } from '@ionic-native/camera';
+import { DiseaseCreatePage } from '../pages/disease-create/disease-create';
+
 
 @NgModule({
   declarations: [
@@ -50,7 +52,8 @@ import { Camera } from '@ionic-native/camera';
     NotificationsPage,
     TabsPage,
     PatientsPage,
-    DiseasesPage
+    DiseasesPage,
+    DiseaseCreatePage
   ],
   imports: [
     BrowserModule,
@@ -76,7 +79,8 @@ import { Camera } from '@ionic-native/camera';
     NotificationsPage,
     TabsPage,
     PatientsPage,
-    DiseasesPage
+    DiseasesPage,
+    DiseaseCreatePage
   ],
   providers: [
     StatusBar,
