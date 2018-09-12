@@ -5,10 +5,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { WelcomePage } from '../welcome/welcome';
 
-import { NeedsEnrolledPage } from '../needs-enrolled/needs-enrolled';
 import { NeedsCreatedPage } from '../needs-created/needs-created';
 import { Profile } from '../../models/profile';
-import { BbrRequestsPage } from '../bbr-requests/bbr-requests';
 
 @IonicPage()
 @Component({
@@ -88,19 +86,12 @@ export class SettingsPage {
     }
   }
 
-  // push needs enrolled page on the top of this page
-  push__needs_enrolled_page() {
-    this.navCtrl.push(NeedsEnrolledPage);
-  }
 
   // push needs created page on the top of this page
   push__needs_created_page() {
     this.navCtrl.push(NeedsCreatedPage);
   }
 
-  push__bbr_requests_page() {
-    this.navCtrl.push(BbrRequestsPage);
-  }
 
   send_bbr_request() {
 

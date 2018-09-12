@@ -6,7 +6,6 @@ import { AngularFireDatabase, AngularFireObject, AngularFireList } from 'angular
 import { database } from 'firebase';
 import { Needs } from '../../models/needs';
 import { Profile } from '../../models/profile';
-import { ProfileDonorPage } from '../profile-donor/profile-donor';
 import { Notifications } from '../../models/notifications';
 
 @IonicPage()
@@ -291,9 +290,9 @@ export class NeedsSinglePage {
     toast.present();
   }
 
-  push__profile_donor_page(userId: String) {
-    this.navCtrl.push(ProfileDonorPage, { userId: userId });
-  }
+  // push__profile_donor_page(userId: String) {
+  //   this.navCtrl.push(ProfileDonorPage, { userId: userId });
+  // }
 
   ionViewDidLeave() {
     for (let sub of this.subscriptions) {

@@ -4,6 +4,6 @@ export const FIREBASE_CONFIG = {
     authDomain: "ucscmediplus.firebaseapp.com",
     databaseURL: "https://ucscmediplus.firebaseio.com",
     projectId: "ucscmediplus",
-    storageBucket: "",
+    storageBucket: "ucscmediplus.appspot.com",
     messagingSenderId: "1070563796490"
 };

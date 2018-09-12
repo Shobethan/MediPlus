@@ -172,13 +172,18 @@ export class ProfileFirstPage {
   }
 
   // save profile details of the user in firebase database or show error toast message for any errors
-  async save(profile: Profile) {
+  async save(profile: Profile, isDoctor: boolean) {
 
     // since these fields are not required if they empty assign null value to them
     this.profile.lastname = this.profile.lastname || this.lastname;
     this.profile.bio = this.profile.bio || this.bio;
     this.profile.phone = this.profile.phone || this.phone;
-    this.profile.userrole = "donor";
+    if (isDoctor) {
+      this.profile.userrole = "doctor";
+    }
+    else {
+      this.profile.userrole = "patient";
+    }
 
     this.profile.profilepicture = this.profilePictureUrl;
 

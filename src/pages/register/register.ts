@@ -18,6 +18,7 @@ export class RegisterPage {
 
   user = {} as User;
   confirm_password = this.confirm_password;
+  userRole = "patient";
 
   constructor(
     public navCtrl: NavController,
@@ -100,13 +101,6 @@ export class RegisterPage {
         this.confirm_password = "";
       }
     }
-  }
-
-  // Register with facebook
-  registerWithFacebook() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
-    // this.afAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider())
-    .then( result => console.log (result));
   }
 
   // navigate to login page
