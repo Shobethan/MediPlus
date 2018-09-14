@@ -33,6 +33,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Camera } from '@ionic-native/camera';
 import { DiseaseCreatePage } from '../pages/disease-create/disease-create';
+import { PatientsProfilePage } from '../pages/patients-profile/patients-profile';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { DiseaseCreatePage } from '../pages/disease-create/disease-create';
     TabsPage,
     PatientsPage,
     DiseasesPage,
-    DiseaseCreatePage
+    DiseaseCreatePage,
+    PatientsProfilePage,
   ],
   imports: [
     BrowserModule,
@@ -80,7 +82,8 @@ import { DiseaseCreatePage } from '../pages/disease-create/disease-create';
     TabsPage,
     PatientsPage,
     DiseasesPage,
-    DiseaseCreatePage
+    DiseaseCreatePage,
+    PatientsProfilePage,
   ],
   providers: [
     StatusBar,

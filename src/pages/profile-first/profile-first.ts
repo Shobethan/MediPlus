@@ -178,6 +178,7 @@ export class ProfileFirstPage {
     this.profile.lastname = this.profile.lastname || this.lastname;
     this.profile.bio = this.profile.bio || this.bio;
     this.profile.phone = this.profile.phone || this.phone;
+    this.profile.userid = this.afAuth.auth.currentUser.uid;
     if (isDoctor) {
       this.profile.userrole = "doctor";
     }

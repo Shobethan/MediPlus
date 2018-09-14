@@ -24,58 +24,12 @@
     </ion-searchbar>
 
 
-    
-    <div *ngFor="let dis of disData | async " style="display: inline-block; padding-left: 12px;">
-      
-      <ion-row>
-        <ion-col text-center>
-          <ion-card class="diseases">
-            <h2 ion-text text-uppercase color="white">{{dis.name}}</h2>
-          </ion-card>
-        </ion-col>
-        <ion-col text-center>
-          <ion-card class="diseases">
-            <h2 ion-text text-uppercase color="white">{{dis.name}}</h2>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-    </div>
-
-    <!-- <ion-row>
+    <ion-row *ngFor="let dis of disData | async ">
       <ion-col text-center>
         <ion-card class="diseases">
-          <h2 ion-text text-uppercase color="white">Flu</h2>
-        </ion-card>
-      </ion-col>
-      <ion-col text-center>
-        <ion-card class="diseases">
-          <h2 ion-text text-uppercase color="white">Stroke</h2>
+          <h2 ion-text text-uppercase color="white">{{dis.name}}</h2>
         </ion-card>
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col text-center>
-        <ion-card class="diseases">
-          <h2 ion-text text-uppercase color="white">Allergy</h2>
-        </ion-card>
-      </ion-col>
-      <ion-col text-center>
-        <ion-card class="diseases">
-          <h2 ion-text text-uppercase color="white">Headache</h2>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col text-center>
-        <ion-card class="diseases">
-          <h2 ion-text text-uppercase color="white">HIV</h2>
-        </ion-card>
-      </ion-col>
-      <ion-col text-center>
-        <ion-card class="diseases">
-          <h2 ion-text text-uppercase color="white">Fracture</h2>
-        </ion-card>
-      </ion-col>
-    </ion-row> -->
   </ion-grid>
 </ion-content>

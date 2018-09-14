@@ -1,5 +1,6 @@
 // interface for Profile
 export interface Profile {
+    userid: string;
     profilepicture: string;
     firstname: string;
     lastname: string;
