@@ -1,0 +1,20 @@
+<!-- header segment of the page -->
+<ion-header>
+  <ion-navbar>
+    <ion-title>TASKS</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<!-- body segment of the page -->
+<ion-content no-padding id='main'>
+  <ion-grid no-padding>
+
+    <ion-row *ngFor="let disease of diseaseData | async " (click)="push__Cure_Single_Page2(disease.diseaseid)">
+      <ion-col text-center>
+        <ion-card class="diseases">
+          <h2 ion-text text-uppercase color="white">{{disease.name}}</h2>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,33 @@
+<!-- header segment of the page -->
+<ion-header>
+  <ion-navbar>
+  </ion-navbar>
+</ion-header>
+
+<!-- body segment of the page -->
+<ion-content no-padding id='main'>
+  <ion-grid no-padding>
+
+    <!-- Blood group detail of the need thread -->
+    <ion-list no-border style="margin-top: 30px;">
+      <ion-item>
+        <ion-icon name='md-water' item-start color="primary"></ion-icon>
+        <h2 ion-text color="dark">Disease Name :</h2>
+        <p>{{ (diseaseData | async)?.name }}</p>
+      </ion-item>
+      <ion-item>
+        <ion-icon name='md-albums' item-start color="blue"></ion-icon>
+        <h2 ion-text color="dark">Description :</h2>
+        <p style="white-space: normal !important;" text-justify>{{ (diseaseData | async)?.desc }}</p>
+      </ion-item>
+    </ion-list>
+
+    <ion-list no-border>
+      <ion-item>
+        <ion-icon name='md-calendar' item-start color="green"></ion-icon>
+        <h2 ion-text color="dark">Special Announcement :</h2>
+        <p>{{ (diseaseData | async)?.sp_anno }}</p>
+      </ion-item>
+    </ion-list>
+  </ion-grid>
+</ion-content>

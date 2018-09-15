@@ -34,16 +34,15 @@ export class PatientsPage {
     var val = ev.target.value;
 
     if (val != "") {
-      this.patientsRef$ = this.afDatabase.list<Profile[]>(`Profile`);
+      this.patientsRef$ = this.afDatabase.list<Profile[]>(`Profile`, ref => ref.orderByChild("firstname").equalTo(val));
       this.patientsData = this.patientsRef$.valueChanges();
     } else {
-      this.patientsRef$ = this.afDatabase.list<Profile[]>(`Profile`);
-      this.patientsData = this.patientsRef$.valueChanges();
+      this.showOriginal();
     }
   }
 
   showOriginal() {
-    this.patientsRef$ = this.afDatabase.list<Profile[]>(`Profile`);
+    this.patientsRef$ = this.afDatabase.list<Profile[]>(`Profile`, ref => ref.orderByChild("userrole").equalTo("patient"));
     this.patientsData = this.patientsRef$.valueChanges();
   }
 

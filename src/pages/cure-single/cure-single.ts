@@ -1,56 +1,33 @@
+// imports necessary packages for the needs single page
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ToastController, AlertController } from 'ionic-angular';
-import { DiseaseCreatePage } from '../disease-create/disease-create';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, AngularFireObject, AngularFireList } from 'angularfire2/database';
 import { database } from 'firebase';
-import { CureSinglePage } from '../cure-single/cure-single';
-
-/**
- * Generated class for the DiseasesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Needs } from '../../models/needs';
+import { Profile } from '../../models/profile';
+import { Notifications } from '../../models/notifications';
+import { Disease } from '../../models/disease';
 
 @IonicPage()
 @Component({
-  selector: 'page-diseases',
-  templateUrl: 'diseases.html',
+  selector: 'page-cure-single',
+  templateUrl: 'cure-single.html',
 })
-export class DiseasesPage {
 
+export class CureSinglePage {
 
+  diseaseRef$: AngularFireObject<Disease>;
+  diseaseData: any;
 
-
-
-
-  disRef$: AngularFireList<String>;
-  disData: any;
-
-
-
-  
-
-  constructor(public navCtrl: NavController,
+  constructor(
+    public navCtrl: NavController,
     public navParams: NavParams,
     private afAuth: AngularFireAuth,
     private afDatabase: AngularFireDatabase,
     private loadCtrl: LoadingController,
     private toastCtrl: ToastController,
     private alertCtrl: AlertController) {
-  }
-
-  // ionViewDidLoad() {
-  //   console.log('ionViewDidLoad DiseasesPage');
-  // }
-
-
-  push__needs_create_page() {
-
-    this.navCtrl.push(DiseaseCreatePage)
-
-
   }
 
   async ionViewWillEnter() {
@@ -62,20 +39,24 @@ export class DiseasesPage {
     });
     loader.present();
 
-   
-
     try {
-      // Get the current userId
-      var userid = this.afAuth.auth.currentUser.uid;
 
+      // Capture the needId as a Navparameter
+      const diseaseId = this.navParams.get('diseaseId');
 
-      this.disRef$ = this.afDatabase.list<string>(`Disease/${userid}`);
-      this.disData =this.disRef$.valueChanges()
-      loader.dismiss();
-    
-    }
-    catch (e) {
+      var userId = this.afAuth.auth.currentUser.uid;
+
+      // try to get need details from firebase database
+      this.diseaseRef$ = await this.afDatabase.object<Disease>(`Disease/${userId}/${diseaseId}`);
+      this.diseaseData = await this.diseaseRef$.valueChanges();
+
       
+      loader.dismiss();
+    }
+
+    // catch and show errors via toast message only if any errors occur
+    catch (e) {
+      loader.dismiss();
       let toast = this.toastCtrl.create({
         message: e,
         duration: 5000,
@@ -86,13 +67,5 @@ export class DiseasesPage {
     }
   }
 
-
-  push__Cure_Single_Page(diseaseId: string) {
-    this.navCtrl.push(CureSinglePage, { diseaseId: diseaseId });
-  }
   
-
-  
-
-
 }

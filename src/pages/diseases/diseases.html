@@ -24,7 +24,7 @@
     </ion-searchbar>
 
 
-    <ion-row *ngFor="let dis of disData | async ">
+    <ion-row *ngFor="let dis of disData | async " (click)="push__Cure_Single_Page(dis.diseaseid)">
       <ion-col text-center>
         <ion-card class="diseases">
           <h2 ion-text text-uppercase color="white">{{dis.name}}</h2>

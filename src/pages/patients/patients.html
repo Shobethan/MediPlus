@@ -17,9 +17,9 @@
 
     <ion-searchbar [(ngModel)]="myInput" showCancelButton=false placeholder="Search" (ionInput)="showPatients($event)" (ionCancel)="showOriginal($event)">
     </ion-searchbar>
-
-    <!-- Recent Patients -->
-    <h3 ion-text text-uppercase color="card-header" style="margin-top: 30px; margin-bottom:10px; padding-left: 12px;">Recent Patients</h3>
+<!-- 
+    Recent Patients
+    <h3 ion-text text-uppercase color="card-header" style="margin-top: 30px; margin-bottom:10px; padding-left: 12px;">Recent Patients</h3> -->
     <ion-list >
 
       <ion-item *ngFor="let patient of patientsData | async " (click)="push__patientsProfile_Page(patient.userid)">

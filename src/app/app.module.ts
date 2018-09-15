@@ -34,6 +34,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Camera } from '@ionic-native/camera';
 import { DiseaseCreatePage } from '../pages/disease-create/disease-create';
 import { PatientsProfilePage } from '../pages/patients-profile/patients-profile';
+import { TasksPage } from '../pages/tasks/tasks';
+import { CureSinglePage } from '../pages/cure-single/cure-single';
+import { CureSingle2Page } from '../pages/cure-single2/cure-single2';
 
 
 @NgModule({
@@ -56,6 +59,9 @@ import { PatientsProfilePage } from '../pages/patients-profile/patients-profile'
     DiseasesPage,
     DiseaseCreatePage,
     PatientsProfilePage,
+    TasksPage,
+    CureSinglePage,
+    CureSingle2Page
   ],
   imports: [
     BrowserModule,
@@ -84,6 +90,9 @@ import { PatientsProfilePage } from '../pages/patients-profile/patients-profile'
     DiseasesPage,
     DiseaseCreatePage,
     PatientsProfilePage,
+    TasksPage,
+    CureSinglePage,
+    CureSingle2Page
   ],
   providers: [
     StatusBar,

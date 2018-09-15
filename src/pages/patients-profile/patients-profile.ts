@@ -57,7 +57,7 @@ export class PatientsProfilePage {
       this.profileRef$ = this.afDatabase.object<Profile>(`Profile/${this.patientId}`);
       this.profileData = this.profileRef$.valueChanges();
 
-      this.userEmail = this.afAuth.auth.currentUser.email;
+
 
       var curUserId = this.afAuth.auth.currentUser.uid;
 
@@ -93,7 +93,7 @@ export class PatientsProfilePage {
 
   show__assign_settings() {
     let alert = this.alertCtrl.create();
-    alert.setTitle('Lightsaber color');
+    alert.setTitle('Select Disease');
 
 
     for (let entry of this.diseaseData) {
@@ -119,7 +119,21 @@ export class PatientsProfilePage {
 
   assignCure(id) {
     var userId = this.afAuth.auth.currentUser.uid
-    this.afDatabase.object<Disease>(`Disease/${userId}/${id}`).valueChanges().subscribe(data => this.afDatabase.list<Disease>(`AssignedCure/${this.patientId}`).push(data)
-    .then(() => this.navCtrl.pop()));
+    var key;
+    this.afDatabase.object<Disease>(`Disease/${userId}/${id}`).valueChanges().subscribe(data => {key = this.afDatabase.list<Disease>(`AssignedCure/${this.patientId}`).push(data).key;
+    this.afDatabase.object(`AssignedCure/${this.patientId}/${key}/diseaseid`).set(key)
+    .then(() => {
+      let toast = this.toastCtrl.create({
+        message: "Cure has been assigned Succesfully",
+        duration: 5000,
+        position: "top",
+        cssClass: "success_toast"
+      });
+      toast.present();
+    })
+    .then(() => this.navCtrl.pop());
+  });
+    
+    
   }
 }

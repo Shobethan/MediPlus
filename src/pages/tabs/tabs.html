@@ -1,7 +1,8 @@
 <!-- main pages connected with tabs bar -->
 <ion-tabs>
-  <ion-tab [root]="tab1Root" tabTitle="Patients" tabIcon="md-contacts" tabsHideOnSubPages="true"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="Cure" tabIcon="md-medical" tabsHideOnSubPages="true"></ion-tab>
+  <ion-tab [root]="tab1Root" tabTitle="Patients" tabIcon="md-contacts" tabsHideOnSubPages="true" *ngIf="!isPatient && isDoctor"></ion-tab>
+  <ion-tab [root]="tab5Root" tabTitle="Tasks" tabIcon="md-medkit" tabsHideOnSubPages="true" *ngIf="isPatient && !isDoctor"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="Cure" tabIcon="md-medical" tabsHideOnSubPages="true"  *ngIf="!isPatient && isDoctor"></ion-tab>
   <ion-tab [root]="tab3Root" tabTitle="Profile" tabIcon="md-contact" tabsHideOnSubPages="true"></ion-tab>
   <ion-tab [root]="tab4Root" tabTitle="Settings" tabIcon="md-cog" tabsHideOnSubPages="true"></ion-tab>
 </ion-tabs>
